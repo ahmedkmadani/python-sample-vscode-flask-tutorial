@@ -67,7 +67,7 @@ stages:
   jobs:
   - deployment: DeploymentJob
     pool:
-      vmImage: $(vmImageName)
+      name: flask-app-agent-pool
     environment: $(environmentName)
     strategy:
       runOnce:
