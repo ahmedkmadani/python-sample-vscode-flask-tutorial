@@ -31,7 +31,7 @@ stages:
   jobs:
   - job: BuildJob
     pool:
-      name: flask-app-agent-pool
+      name: Linux-Pool
     steps:
     - task: UsePythonVersion@0
       inputs:
@@ -67,7 +67,7 @@ stages:
   jobs:
   - deployment: DeploymentJob
     pool:
-      name: flask-app-agent-pool
+      name: Linux-Pool
     environment: $(environmentName)
     strategy:
       runOnce:
