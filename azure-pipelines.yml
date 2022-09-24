@@ -87,6 +87,6 @@ stages:
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
               
               startUpCommand: 'gunicorn --bind=0.0.0.0 --workers=4 startup:app'
-          - task: WhiteSource@21
-            inputs:
-              cwd: '$(System.DefaultWorkingDirectory)'
+          # - task: WhiteSource@21
+          #   inputs:
+          #     cwd: '$(System.DefaultWorkingDirectory)'
