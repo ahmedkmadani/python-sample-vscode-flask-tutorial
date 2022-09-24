@@ -61,32 +61,32 @@ stages:
       artifact: drop
 
 # - stage: Deploy
-  displayName: 'Deploy Web App'
-  dependsOn: Build
-  condition: succeeded()
-  jobs:
-  - deployment: DeploymentJob
-    pool:
-      name:  flask-app-agent-pool
-    environment: $(environmentName)
-    strategy:
-      runOnce:
-        deploy:
-          steps:
+  # displayName: 'Deploy Web App'
+  # dependsOn: Build
+  # condition: succeeded()
+  # jobs:
+  # - deployment: DeploymentJob
+  #   pool:
+  #     name:  flask-app-agent-pool
+  #   environment: $(environmentName)
+  #   strategy:
+  #     runOnce:
+  #       deploy:
+  #         steps:
 
-          - task: UsePythonVersion@0
-            inputs:
-              versionSpec: '$(pythonVersion)'
-            displayName: 'Use Python version'
+  #         - task: UsePythonVersion@0
+  #           inputs:
+  #             versionSpec: '$(pythonVersion)'
+  #           displayName: 'Use Python version'
 
-          - task: AzureWebApp@1
-            displayName: 'Deploy Azure Web App : flask-app-devops'
-            inputs:
-              azureSubscription: $(azureServiceConnectionId)
-              appName: $(webAppName)
-              package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
+  #         - task: AzureWebApp@1
+  #           displayName: 'Deploy Azure Web App : flask-app-devops'
+  #           inputs:
+  #             azureSubscription: $(azureServiceConnectionId)
+  #             appName: $(webAppName)
+  #             package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
               
-              startUpCommand: 'gunicorn --bind=0.0.0.0 --workers=4 startup:app'
+  #             startUpCommand: 'gunicorn --bind=0.0.0.0 --workers=4 startup:app'
           # - task: WhiteSource@21
           #   inputs:
           #     cwd: '$(System.DefaultWorkingDirectory)'
