@@ -37,3 +37,9 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+
+    # - task: KubernetesManifest@0
+    #   inputs:
+    #     action: 'deploy'
+    #     kubernetesServiceConnection: 'k8s-connection'
+    #     manifests: 'app.yaml'
